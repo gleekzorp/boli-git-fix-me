@@ -9,6 +9,8 @@ verify_ssl = true
 flask-sqlalchemy = "*"
 flask-marshmallow = "*"
 flask-cors = "*"
+flask = "*"
+marshmallow-sqlalchemy = "*"
 
 [requires]
 python_version = "3.8"

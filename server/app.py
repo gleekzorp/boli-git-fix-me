@@ -20,13 +20,6 @@ class Book(db.Model):
   star_rating = db.Column(db.String(100), nullable=False)
   book_read = db.Column(db.Boolean)
   
-  def __init__(self, title, author, url, genre, star_rating, book_read):
-    self.title = title
-    self.author = author
-    self.url = url
-    self.genre = genre
-    self.star_rating = star_rating
-    self.book_read = book_read
 
 
 class bookSchema(ma.Schema):
