@@ -38,7 +38,7 @@ def add_book():
   genre = request.json["genre"]
   star_rating = request.json["star_rating"]
   book_read = request.json["book_read"]
-  new_book = Book(titles=title, author=author, url=url, genre=genre, star_rating=star_rating, book_read=book_read)
+  new_book = Book(title=title, author=author, url=url, genre=genre, star_rating=star_rating, book_read=book_read)
   db.session.add(new_book)
   db.session.commit()
   return jsonify(message="Success")
