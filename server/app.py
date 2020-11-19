@@ -19,6 +19,7 @@ class Book(db.Model):
   genre = db.Column(db.String(100), nullable=False)
   star_rating = db.Column(db.String(100), nullable=False)
   book_read = db.Column(db.Boolean)
+  
 
 
 class bookSchema(ma.Schema):
@@ -37,7 +38,7 @@ def add_book():
   genre = request.json["genre"]
   star_rating = request.json["star_rating"]
   book_read = request.json["book_read"]
-  new_book = Book(titles=title, author=author, url=url, genre=genre, star_rating=star_rating, book_read=book_read)
+  new_book = Book(title=title, author=author, url=url, genre=genre, star_rating=star_rating, book_read=book_read)
   db.session.add(new_book)
   db.session.commit()
   return jsonify(message="Success")
@@ -59,7 +60,7 @@ def get_books():
 @app.route("/book-read/<id>", methods=["PATCH"])
 def update_book(id):
   book = Book.query.get(id)
-  book.book_read = request.json["bookread"]
+  book.book_read = request.json["book_read"]
   db.session.commit()
   return jsonify(message="Book Updated")
 
@@ -67,7 +68,7 @@ def update_book(id):
 # DELETE
 @app.route("/delete-book/<id>", methods=["DELETE"])
 def delete_book(id):
-  book = book.query.get(id)
+  book = Book.query.get(id)
   db.session.delete(book)
   db.session.commit()
   return jsonify(message="Book Deleted!")
